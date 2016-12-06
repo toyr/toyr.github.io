@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://toyr.github.io/"/>
-  <updated>2016-12-06T06:46:24.000Z</updated>
+  <updated>2016-12-06T11:08:38.000Z</updated>
   <id>http://toyr.github.io/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="http://toyr.github.io/2016/11/28/My-New-Post/"/>
     <id>http://toyr.github.io/2016/11/28/My-New-Post/</id>
     <published>2016-11-28T06:20:17.000Z</published>
-    <updated>2016-12-06T06:46:24.000Z</updated>
+    <updated>2016-12-06T11:08:38.000Z</updated>
     
-    <content type="html"><![CDATA[<p>&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x7A0B;&#x5E8F;&#x5458;&#xFF0C;&#x52A0;&#x5165;&#x4E00;&#x4E2A;&#x65B0;&#x56E2;&#x961F;&#xFF0C;&#x7B2C;&#x4E00;&#x4EF6;&#x4E8B;&#x60C5;&#x5E94;&#x8BE5;&#x5C31;&#x662F;&#x642D;&#x5EFA;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#xFF0C;&#x8BA9;&#x9879;&#x76EE;&#x8DD1;&#x8D77;&#x6765;&#xFF0C;&#x719F;&#x6089;&#x9879;&#x76EE;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x6B63;&#x5F0F;&#x5F00;&#x59CB;&#x5DE5;&#x4F5C;&#x4E86;&#xFF0C;&#x603B;&#x7ED3;&#x4E86;&#x4E00;&#x4E0B;&#x5E38;&#x7528;&#x7684;&#x4E00;&#x4E9B;&#x73AF;&#x5883;&#x642D;&#x5EFA;&#x3002;<br><a id="more"></a></p>
+    <content type="html"><![CDATA[<p><meta name="baidu-site-verification" content="ZTQ5KWhEh6"><br>&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x7A0B;&#x5E8F;&#x5458;&#xFF0C;&#x52A0;&#x5165;&#x4E00;&#x4E2A;&#x65B0;&#x56E2;&#x961F;&#xFF0C;&#x7B2C;&#x4E00;&#x4EF6;&#x4E8B;&#x60C5;&#x5E94;&#x8BE5;&#x5C31;&#x662F;&#x642D;&#x5EFA;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#xFF0C;&#x8BA9;&#x9879;&#x76EE;&#x8DD1;&#x8D77;&#x6765;&#xFF0C;&#x719F;&#x6089;&#x9879;&#x76EE;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x6B63;&#x5F0F;&#x5F00;&#x59CB;&#x5DE5;&#x4F5C;&#x4E86;&#xFF0C;&#x603B;&#x7ED3;&#x4E86;&#x4E00;&#x4E0B;&#x5E38;&#x7528;&#x7684;&#x4E00;&#x4E9B;&#x73AF;&#x5883;&#x642D;&#x5EFA;&#x3002;<br><a id="more"></a></p>
 <h2 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h2><p>&#x9996;&#x5148;&#x5B89;&#x88C5;jdk&#xFF0C;&#x786E;&#x5B9A;&#x597D;&#x81EA;&#x5DF1;&#x7684;&#x5B89;&#x88C5;&#x8DEF;&#x5F84;&#xFF0C;&#x7136;&#x540E;&#x5F00;&#x59CB;&#x914D;&#x7F6E;&#x73AF;&#x5883;&#x53D8;&#x91CF;</p>
 <ol>
 <li><p>&#x65B0;&#x5EFA;JAVA_HOME&#x53D8;&#x91CF;&#xFF0C;&#x503C;&#x4E3A;&#x4F60;jdk&#x7684;&#x5B89;&#x88C5;&#x8DEF;&#x5F84;&#xFF0C;D:Program\ Files\Java\jdk1.7.0_80</p>
@@ -97,7 +97,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;&amp;#x4F5C;&amp;#x4E3A;&amp;#x4E00;&amp;#x4E2A;&amp;#x7A0B;&amp;#x5E8F;&amp;#x5458;&amp;#xFF0C;&amp;#x52A0;&amp;#x5165;&amp;#x4E00;&amp;#x4E2A;&amp;#x65B0;&amp;#x56E2;&amp;#x961F;&amp;#xFF0C;&amp;#x7B2C;&amp;#x4E00;&amp;#x4EF6;&amp;#x4E8B;&amp;#x60C5;&amp;#x5E94;&amp;#x8BE5;&amp;#x5C31;&amp;#x662F;&amp;#x642D;&amp;#x5EFA;&amp;#x5F00;&amp;#x53D1;&amp;#x73AF;&amp;#x5883;&amp;#xFF0C;&amp;#x8BA9;&amp;#x9879;&amp;#x76EE;&amp;#x8DD1;&amp;#x8D77;&amp;#x6765;&amp;#xFF0C;&amp;#x719F;&amp;#x6089;&amp;#x9879;&amp;#x76EE;&amp;#x4E4B;&amp;#x540E;&amp;#xFF0C;&amp;#x5C31;&amp;#x53EF;&amp;#x4EE5;&amp;#x6B63;&amp;#x5F0F;&amp;#x5F00;&amp;#x59CB;&amp;#x5DE5;&amp;#x4F5C;&amp;#x4E86;&amp;#xFF0C;&amp;#x603B;&amp;#x7ED3;&amp;#x4E86;&amp;#x4E00;&amp;#x4E0B;&amp;#x5E38;&amp;#x7528;&amp;#x7684;&amp;#x4E00;&amp;#x4E9B;&amp;#x73AF;&amp;#x5883;&amp;#x642D;&amp;#x5EFA;&amp;#x3002;&lt;br&gt;&lt;/p&gt;
+      &lt;p&gt;&lt;meta name=&quot;baidu-site-verification&quot; content=&quot;ZTQ5KWhEh6&quot;&gt;&lt;br&gt;&amp;#x4F5C;&amp;#x4E3A;&amp;#x4E00;&amp;#x4E2A;&amp;#x7A0B;&amp;#x5E8F;&amp;#x5458;&amp;#xFF0C;&amp;#x52A0;&amp;#x5165;&amp;#x4E00;&amp;#x4E2A;&amp;#x65B0;&amp;#x56E2;&amp;#x961F;&amp;#xFF0C;&amp;#x7B2C;&amp;#x4E00;&amp;#x4EF6;&amp;#x4E8B;&amp;#x60C5;&amp;#x5E94;&amp;#x8BE5;&amp;#x5C31;&amp;#x662F;&amp;#x642D;&amp;#x5EFA;&amp;#x5F00;&amp;#x53D1;&amp;#x73AF;&amp;#x5883;&amp;#xFF0C;&amp;#x8BA9;&amp;#x9879;&amp;#x76EE;&amp;#x8DD1;&amp;#x8D77;&amp;#x6765;&amp;#xFF0C;&amp;#x719F;&amp;#x6089;&amp;#x9879;&amp;#x76EE;&amp;#x4E4B;&amp;#x540E;&amp;#xFF0C;&amp;#x5C31;&amp;#x53EF;&amp;#x4EE5;&amp;#x6B63;&amp;#x5F0F;&amp;#x5F00;&amp;#x59CB;&amp;#x5DE5;&amp;#x4F5C;&amp;#x4E86;&amp;#xFF0C;&amp;#x603B;&amp;#x7ED3;&amp;#x4E86;&amp;#x4E00;&amp;#x4E0B;&amp;#x5E38;&amp;#x7528;&amp;#x7684;&amp;#x4E00;&amp;#x4E9B;&amp;#x73AF;&amp;#x5883;&amp;#x642D;&amp;#x5EFA;&amp;#x3002;&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
