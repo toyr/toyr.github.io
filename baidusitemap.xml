@@ -4,6 +4,55 @@
 
     
   <url>
+    <loc>http://toyr.github.io/2016/12/21/weblogic/</loc>
+    <lastmod>2016-12-21T01:52:31.000Z</lastmod>
+    <data>
+        <display>
+        <title>第四篇 weblogic下war包的部署</title>
+        <pubTime>2016-12-21T01:36:13.000Z</pubTime>
+        
+        <tag>weblogic</tag>
+         
+        <tag>war包</tag>
+         
+        <tag>项目部署</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="http://toyr.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://toyr.github.io/2016/12/16/ExecutorService/</loc>
+    <lastmod>2016-12-21T01:37:39.000Z</lastmod>
+    <data>
+        <display>
+        <title>第三篇 ExecutorService</title>
+        <pubTime>2016-12-16T11:08:17.000Z</pubTime>
+        
+        <tag>ExecutorService</tag>
+         
+        <tag>java.util.concurrent</tag>
+         
+        <tag>并发处理包</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="http://toyr.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
     <loc>http://toyr.github.io/2016/12/07/SSM/</loc>
     <lastmod>2016-12-15T06:19:26.000Z</lastmod>
     <data>
@@ -48,5 +97,4 @@
     </data>
     </url>
 
-    
 </urlset>

@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://toyr.github.io/2016/12/21/weblogic/</loc>
+    
+    <lastmod>2016-12-21T01:52:31.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://toyr.github.io/2016/12/16/ExecutorService/</loc>
+    
+    <lastmod>2016-12-21T01:37:39.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://toyr.github.io/about/index.html</loc>
+    
+    <lastmod>2016-12-16T11:02:26.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://toyr.github.io/2016/12/07/SSM/</loc>
     
     <lastmod>2016-12-15T06:19:26.000Z</lastmod>
@@ -12,13 +33,6 @@
     <loc>http://toyr.github.io/2016/11/28/My-New-Post/</loc>
     
     <lastmod>2016-12-06T11:41:17.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://toyr.github.io/about/index.html</loc>
-    
-    <lastmod>2016-12-06T09:44:40.000Z</lastmod>
     
   </url>
   
