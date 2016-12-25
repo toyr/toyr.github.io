@@ -62,9 +62,9 @@
     <link href="http://toyr.github.io/2016/12/16/ExecutorService/"/>
     <id>http://toyr.github.io/2016/12/16/ExecutorService/</id>
     <published>2016-12-16T11:08:17.000Z</published>
-    <updated>2016-12-23T10:06:15.000Z</updated>
+    <updated>2016-12-25T13:46:48.000Z</updated>
     
-    <content type="html"><![CDATA[<p>&#x7B80;&#x5355;&#x8C08;&#x4E00;&#x4E0B;&#x5BF9;&#x5E76;&#x53D1;&#x5904;&#x7406;&#x5305;&#x4E2D;Executor&#x548C;ExecutorService&#x7684;&#x7406;&#x89E3;&#xFF0C;&#x591A;&#x662F;&#x7FFB;&#x8BD1;&#x7684;Java API&#xFF0C;&#x7136;&#x540E;&#x5199;&#x4E86;&#x4E00;&#x4E2A;&#x5B9E;&#x9645;&#x7528;&#x4F8B;&#xFF0C;&#x65B9;&#x4FBF;&#x7406;&#x89E3;&#x3002;<br><a id="more"></a></p>
+    <content type="html"><![CDATA[<p>&#x7B80;&#x5355;&#x8C08;&#x4E00;&#x4E0B;&#x5BF9;&#x5E76;&#x53D1;&#x5904;&#x7406;&#x5305;&#x4E2D;Executor&#x548C;ExecutorService&#xFF08;&#x7EBF;&#x7A0B;&#x6C60;&#xFF09;&#x7684;&#x7406;&#x89E3;&#xFF0C;&#x591A;&#x662F;&#x7FFB;&#x8BD1;&#x7684;Java API&#xFF0C;&#x7136;&#x540E;&#x5199;&#x4E86;&#x4E00;&#x4E2A;&#x5B9E;&#x9645;&#x7528;&#x4F8B;&#xFF0C;&#x65B9;&#x4FBF;&#x7406;&#x89E3;&#x3002;<br><a id="more"></a></p>
 <h2 id="Executors&#x7C7B;"><a href="#Executors&#x7C7B;" class="headerlink" title="Executors&#x7C7B;"></a>Executors&#x7C7B;</h2><h4 id="&#x5E38;&#x7528;&#x65B9;&#x6CD5;"><a href="#&#x5E38;&#x7528;&#x65B9;&#x6CD5;" class="headerlink" title="&#x5E38;&#x7528;&#x65B9;&#x6CD5;"></a>&#x5E38;&#x7528;&#x65B9;&#x6CD5;</h4><ol>
 <li><p>newFixedThreadPool</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static ExecutorService newFixedThreadPool(int nThreads)</div></pre></td></tr></table></figure>
@@ -92,11 +92,31 @@
 </li>
 <li><p>submit</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;T&gt; Future&lt;T&gt; submit(Callable&lt;T&gt; task)</div></pre></td></tr></table></figure>
-<p>&#x53C2;&#x6570;&#xFF1A;task - &#x8981;&#x63D0;&#x4EA4;&#x7684;&#x4EFB;&#x52A1;<br>&#x8FD4;&#x56DE;&#xFF1A;<br>&#x629B;&#x51FA;&#xFF1A;RejectedExecutionException - &#x4EFB;&#x52A1;&#x65E0;&#x6CD5;&#x63A5;&#x53D7;&#x6267;&#x884C;<br>   NullPointerException - command&#x4E3A;null<br>&#x8BF4;&#x660E;&#xFF1A;</p>
+<p>&#x53C2;&#x6570;&#xFF1A;task - &#x8981;&#x63D0;&#x4EA4;&#x7684;&#x4EFB;&#x52A1;<br>&#x8FD4;&#x56DE;&#xFF1A;Future<br>&#x629B;&#x51FA;&#xFF1A;RejectedExecutionException - &#x4EFB;&#x52A1;&#x65E0;&#x6CD5;&#x63A5;&#x53D7;&#x6267;&#x884C;<br>   NullPointerException - command&#x4E3A;null<br>&#x8BF4;&#x660E;&#xFF1A;Future&#x7684;get&#x65B9;&#x6CD5;&#x5C06;&#x5728;&#x6210;&#x529F;&#x5B8C;&#x6210;&#x540E;&#x8FD4;&#x56DE;&#x4EFB;&#x52A1;&#x7684;&#x7ED3;&#x679C;&#x3002;</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;T&gt; Future&lt;T&gt; submit(Runnable task, T result)</div></pre></td></tr></table></figure>
 <p>&#x53C2;&#x6570;&#xFF1A;task - &#x8981;&#x63D0;&#x4EA4;&#x7684;&#x4EFB;&#x52A1;<br>   result  -  &#x8FD4;&#x56DE;&#x7684;&#x7ED3;&#x679C;<br>&#x8FD4;&#x56DE;&#xFF1A;<br>&#x629B;&#x51FA;&#xFF1A;RejectedExecutionException - &#x4EFB;&#x52A1;&#x65E0;&#x6CD5;&#x63A5;&#x53D7;&#x6267;&#x884C;<br>   NullPointerException - command&#x4E3A;null<br>&#x8BF4;&#x660E;&#xFF1A;</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Future&lt;?&gt; submit(Runnable task)</div></pre></td></tr></table></figure>
 <p>&#x53C2;&#x6570;&#xFF1A;task - &#x8981;&#x63D0;&#x4EA4;&#x7684;&#x4EFB;&#x52A1;<br>&#x8FD4;&#x56DE;&#xFF1A;<br>&#x629B;&#x51FA;&#xFF1A;RejectedExecutionException - &#x4EFB;&#x52A1;&#x65E0;&#x6CD5;&#x63A5;&#x53D7;&#x6267;&#x884C;<br>   NullPointerException - command&#x4E3A;null<br>&#x8BF4;&#x660E;&#xFF1A;</p>
+</li>
+<li><p>shutdown</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void shutdown()</div></pre></td></tr></table></figure>
+<p>&#x8BF4;&#x660E;&#xFF1A;&#x542F;&#x52A8;&#x6709;&#x5E8F;&#x5173;&#x95ED;&#xFF0C;&#x5176;&#x4E2D;&#x6267;&#x884C;&#x5148;&#x524D;&#x63D0;&#x4EA4;&#x7684;&#x4EFB;&#x52A1;&#xFF0C;&#x4F46;&#x4E0D;&#x4F1A;&#x63A5;&#x53D7;&#x65B0;&#x4EFB;&#x52A1;&#x3002; &#x5982;&#x679C;&#x5DF2;&#x5173;&#x95ED;&#xFF0C;&#x8C03;&#x7528;&#x6CA1;&#x6709;&#x5176;&#x4ED6;&#x6548;&#x679C;&#x3002;<br>&#x6B64;&#x65B9;&#x6CD5;&#x4E0D;&#x7B49;&#x5F85;&#x5148;&#x524D;&#x63D0;&#x4EA4;&#x7684;&#x4EFB;&#x52A1;&#x5B8C;&#x6210;&#x6267;&#x884C;&#x3002; &#x4F7F;&#x7528;awaitTermination&#x6765;&#x505A;&#x5230;&#x8FD9;&#x4E00;&#x70B9;&#x3002;</p>
+</li>
+<li><p>shutdownNow</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;Runnable&gt; shutdownNow()</div></pre></td></tr></table></figure>
+<p>&#x8FD4;&#x56DE;&#xFF1A; &#x6CA1;&#x6709;&#x5F00;&#x59CB;&#x6267;&#x884C;&#x7684;&#x4EFB;&#x52A1;&#x7684;List&#x96C6;&#x5408;<br>&#x8BF4;&#x660E;&#xFF1A; &#x5C1D;&#x8BD5;&#x505C;&#x6B62;&#x6240;&#x6709;&#x6B63;&#x5728;&#x6267;&#x884C;&#x7684;&#x4EFB;&#x52A1;&#xFF0C;&#x505C;&#x6B62;&#x7B49;&#x5F85;&#x4EFB;&#x52A1;&#x7684;&#x5904;&#x7406;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x7B49;&#x5F85;&#x6267;&#x884C;&#x7684;&#x4EFB;&#x52A1;&#x7684;List&#x96C6;&#x5408;&#x3002;</p>
+</li>
+<li><p>isShutdown</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">boolean isShutdown()</div></pre></td></tr></table></figure>
+<p>&#x8FD4;&#x56DE;&#xFF1A;&#x5982;&#x679C;executor&#x5DF2;&#x7ECF;&#x5173;&#x95ED;&#x5C31;&#x8FD4;&#x56DE;true</p>
+</li>
+<li><p>isTerminated</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">boolean isTerminated()</div></pre></td></tr></table></figure>
+<p>&#x8FD4;&#x56DE;&#xFF1A; &#x5982;&#x679C;&#x6240;&#x6709;&#x4EFB;&#x52A1;&#x5728;&#x5173;&#x95ED;&#x540E;&#x5B8C;&#x6210;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;true&#x3002; &#x6CE8;&#x610F;&#xFF0C;&#x9664;&#x975E;&#x5148;&#x8C03;&#x7528;shutdown&#x6216;shutdownNow&#xFF0C;&#x5426;&#x5219;isTerminated&#x6C38;&#x8FDC;&#x4E0D;&#x4E3A;true&#x3002;</p>
+</li>
+<li><p>awaitTermination</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">boolean awaitTermination(long timeout,</div><div class="line">                     TimeUnit unit)</div><div class="line">                       throws InterruptedException</div></pre></td></tr></table></figure>
+<p>&#x53C2;&#x6570;&#xFF1A; timeout - &#x7B49;&#x5F85;&#x7684;&#x6700;&#x5927;&#x65F6;&#x95F4;<br>unit - timeout&#x53C2;&#x6570;&#x7684;&#x65F6;&#x95F4;&#x5355;&#x4F4D;<br>&#x8BF4;&#x660E;&#xFF1A;&#x5982;&#x679C;&#x6B64;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x7EC8;&#x6B62;&#xFF0C;&#x5219;&#x4E3A;true&#xFF0C;&#x5982;&#x679C;&#x8D85;&#x65F6;&#x5728;&#x7EC8;&#x6B62;&#x4E4B;&#x524D;&#x5DF2;&#x8FC7;&#xFF0C;&#x5219;&#x4E3A;false</p>
 </li>
 </ol>
 <h2 id="&#x7528;&#x4F8B;"><a href="#&#x7528;&#x4F8B;" class="headerlink" title="&#x7528;&#x4F8B;"></a>&#x7528;&#x4F8B;</h2><ol>
@@ -111,7 +131,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;&amp;#x7B80;&amp;#x5355;&amp;#x8C08;&amp;#x4E00;&amp;#x4E0B;&amp;#x5BF9;&amp;#x5E76;&amp;#x53D1;&amp;#x5904;&amp;#x7406;&amp;#x5305;&amp;#x4E2D;Executor&amp;#x548C;ExecutorService&amp;#x7684;&amp;#x7406;&amp;#x89E3;&amp;#xFF0C;&amp;#x591A;&amp;#x662F;&amp;#x7FFB;&amp;#x8BD1;&amp;#x7684;Java API&amp;#xFF0C;&amp;#x7136;&amp;#x540E;&amp;#x5199;&amp;#x4E86;&amp;#x4E00;&amp;#x4E2A;&amp;#x5B9E;&amp;#x9645;&amp;#x7528;&amp;#x4F8B;&amp;#xFF0C;&amp;#x65B9;&amp;#x4FBF;&amp;#x7406;&amp;#x89E3;&amp;#x3002;&lt;br&gt;&lt;/p&gt;
+      &lt;p&gt;&amp;#x7B80;&amp;#x5355;&amp;#x8C08;&amp;#x4E00;&amp;#x4E0B;&amp;#x5BF9;&amp;#x5E76;&amp;#x53D1;&amp;#x5904;&amp;#x7406;&amp;#x5305;&amp;#x4E2D;Executor&amp;#x548C;ExecutorService&amp;#xFF08;&amp;#x7EBF;&amp;#x7A0B;&amp;#x6C60;&amp;#xFF09;&amp;#x7684;&amp;#x7406;&amp;#x89E3;&amp;#xFF0C;&amp;#x591A;&amp;#x662F;&amp;#x7FFB;&amp;#x8BD1;&amp;#x7684;Java API&amp;#xFF0C;&amp;#x7136;&amp;#x540E;&amp;#x5199;&amp;#x4E86;&amp;#x4E00;&amp;#x4E2A;&amp;#x5B9E;&amp;#x9645;&amp;#x7528;&amp;#x4F8B;&amp;#xFF0C;&amp;#x65B9;&amp;#x4FBF;&amp;#x7406;&amp;#x89E3;&amp;#x3002;&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
