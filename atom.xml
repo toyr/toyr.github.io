@@ -62,7 +62,7 @@
     <link href="http://toyr.github.io/2016/12/16/ExecutorService/"/>
     <id>http://toyr.github.io/2016/12/16/ExecutorService/</id>
     <published>2016-12-16T11:08:17.000Z</published>
-    <updated>2016-12-25T13:46:48.000Z</updated>
+    <updated>2016-12-25T13:49:51.000Z</updated>
     
     <content type="html"><![CDATA[<p>&#x7B80;&#x5355;&#x8C08;&#x4E00;&#x4E0B;&#x5BF9;&#x5E76;&#x53D1;&#x5904;&#x7406;&#x5305;&#x4E2D;Executor&#x548C;ExecutorService&#xFF08;&#x7EBF;&#x7A0B;&#x6C60;&#xFF09;&#x7684;&#x7406;&#x89E3;&#xFF0C;&#x591A;&#x662F;&#x7FFB;&#x8BD1;&#x7684;Java API&#xFF0C;&#x7136;&#x540E;&#x5199;&#x4E86;&#x4E00;&#x4E2A;&#x5B9E;&#x9645;&#x7528;&#x4F8B;&#xFF0C;&#x65B9;&#x4FBF;&#x7406;&#x89E3;&#x3002;<br><a id="more"></a></p>
 <h2 id="Executors&#x7C7B;"><a href="#Executors&#x7C7B;" class="headerlink" title="Executors&#x7C7B;"></a>Executors&#x7C7B;</h2><h4 id="&#x5E38;&#x7528;&#x65B9;&#x6CD5;"><a href="#&#x5E38;&#x7528;&#x65B9;&#x6CD5;" class="headerlink" title="&#x5E38;&#x7528;&#x65B9;&#x6CD5;"></a>&#x5E38;&#x7528;&#x65B9;&#x6CD5;</h4><ol>
