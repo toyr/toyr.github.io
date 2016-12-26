@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>第五篇 自定义注解annotation | TOYR</title><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/5.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">第五篇 自定义注解annotation</h1><a id="logo" href="/.">TOYR</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">第五篇 自定义注解annotation</h1><div class="post-meta">Dec 26, 2016<span> | </span><span class="category"><a href="/categories/技术/">技术</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><a data-thread-key="2016/12/26/annotation/" href="/2016/12/26/annotation/#comments" class="ds-thread-count"></a><div class="post-content"><p>springmvc&#x7684;&#x6CE8;&#x89E3;&#x5927;&#x5BB6;&#x5E94;&#x8BE5;&#x90FD;&#x7528;&#x8FC7;&#xFF0C;&#x4F7F;&#x7528;&#x6CE8;&#x89E3;&#x76F8;&#x6BD4;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x66F4;&#x52A0;&#x7B80;&#x5355;&#x6613;&#x7528;&#xFF0C;&#x7B80;&#x5355;&#x4ECB;&#x7ECD;&#x4E00;&#x4E0B;&#x81EA;&#x5B9A;&#x4E49;&#x6CE8;&#x89E3;&#x3002;<br><a id="more"></a></p>
+<ol>
+<li><p>&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x6CE8;&#x89E3;&#x63A5;&#x53E3;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">package com.interceptor.logger.annotations;</div><div class="line"></div><div class="line">import java.lang.annotation.*;</div><div class="line"></div><div class="line">/**</div><div class="line"> * &#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x524D;&#x540E;&#x6216;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x540E;&#x6253;&#x51FA;&#x65E5;&#x5FD7;&#x7684;&#x6CE8;&#x89E3;</div><div class="line"> *</div><div class="line"> * Created by Toyr on 16-12-26.</div><div class="line"> */</div><div class="line">@Retention(RetentionPolicy.RUNTIME)</div><div class="line">@Target(ElementType.METHOD)</div><div class="line">public @interface LogAspects {</div><div class="line">}</div></pre></td></tr></table></figure>
+<h6 id="&#x5143;&#x6CE8;&#x89E3;&#xFF1A;&#x5143;&#x6CE8;&#x89E3;&#x7684;&#x4F5C;&#x7528;&#x5C31;&#x662F;&#x8D1F;&#x8D23;&#x6CE8;&#x89E3;&#x5176;&#x4ED6;&#x6CE8;&#x89E3;&#x3002;-Target&#xFF0C;-Retention&#xFF0C;-Documented&#xFF0C;-Inherited"><a href="#&#x5143;&#x6CE8;&#x89E3;&#xFF1A;&#x5143;&#x6CE8;&#x89E3;&#x7684;&#x4F5C;&#x7528;&#x5C31;&#x662F;&#x8D1F;&#x8D23;&#x6CE8;&#x89E3;&#x5176;&#x4ED6;&#x6CE8;&#x89E3;&#x3002;-Target&#xFF0C;-Retention&#xFF0C;-Documented&#xFF0C;-Inherited" class="headerlink" title="&#x5143;&#x6CE8;&#x89E3;&#xFF1A;&#x5143;&#x6CE8;&#x89E3;&#x7684;&#x4F5C;&#x7528;&#x5C31;&#x662F;&#x8D1F;&#x8D23;&#x6CE8;&#x89E3;&#x5176;&#x4ED6;&#x6CE8;&#x89E3;&#x3002;@Target&#xFF0C;@Retention&#xFF0C;@Documented&#xFF0C;@Inherited"></a>&#x5143;&#x6CE8;&#x89E3;&#xFF1A;&#x5143;&#x6CE8;&#x89E3;&#x7684;&#x4F5C;&#x7528;&#x5C31;&#x662F;&#x8D1F;&#x8D23;&#x6CE8;&#x89E3;&#x5176;&#x4ED6;&#x6CE8;&#x89E3;&#x3002;@Target&#xFF0C;@Retention&#xFF0C;@Documented&#xFF0C;@Inherited</h6><ul>
+<li>@Target &#x6CE8;&#x89E3;&#x7684;&#x4F7F;&#x7528;&#x8303;&#x56F4;&#xFF08;&#x5373;&#xFF1A;&#x88AB;&#x63CF;&#x8FF0;&#x7684;&#x6CE8;&#x89E3;&#x53EF;&#x4EE5;&#x7528;&#x5728;&#x4EC0;&#x4E48;&#x5730;&#x65B9;&#xFF09;</li>
+</ul>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>&#x53D6;&#x503C;</th>
+<th>&#x8303;&#x56F4;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CONSTRUCTOR</td>
+<td>&#x6784;&#x9020;&#x5668;</td>
+</tr>
+<tr>
+<td>FIELD</td>
+<td>&#x57DF;</td>
+</tr>
+<tr>
+<td>LOCAL_VARIABLE</td>
+<td>&#x5C40;&#x90E8;&#x53D8;&#x91CF;</td>
+</tr>
+<tr>
+<td>METHOD</td>
+<td>&#x65B9;&#x6CD5;</td>
+</tr>
+<tr>
+<td>PACKAGE</td>
+<td>&#x5305;</td>
+</tr>
+<tr>
+<td>PARAMETER</td>
+<td>&#x53C2;&#x6570;</td>
+</tr>
+<tr>
+<td>TYPE</td>
+<td>&#x7C7B;&#x3001;&#x63A5;&#x53E3;(&#x5305;&#x62EC;&#x6CE8;&#x89E3;&#x7C7B;&#x578B;) &#x6216;enum&#x58F0;&#x660E;</td>
+</tr>
+</tbody>
+</table>
+<pre><code>* @Retention &#x8868;&#x793A;&#x9700;&#x8981;&#x5728;&#x4EC0;&#x4E48;&#x7EA7;&#x522B;&#x4FDD;&#x5B58;&#x8BE5;&#x6CE8;&#x91CA;&#x4FE1;&#x606F;&#xFF0C;&#x7528;&#x4E8E;&#x63CF;&#x8FF0;&#x6CE8;&#x89E3;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF08;&#x5373;&#xFF1A;&#x88AB;&#x63CF;&#x8FF0;&#x7684;&#x6CE8;&#x89E3;&#x5728;&#x4EC0;&#x4E48;&#x8303;&#x56F4;&#x5185;&#x6709;&#x6548;&#xFF09;
+</code></pre><table>
+<thead>
+<tr>
+<th>&#x53D6;&#x503C;</th>
+<th>&#x751F;&#x547D;&#x5468;&#x671F;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SOURCE</td>
+<td>&#x6E90;&#x6587;&#x4EF6;</td>
+</tr>
+<tr>
+<td>CLASS</td>
+<td>class&#x7A33;&#x5065;</td>
+</tr>
+<tr>
+<td>RUNTIME</td>
+<td>&#x8FD0;&#x884C;&#x65F6;</td>
+</tr>
+</tbody>
+</table>
+<pre><code>* @Documented
+</code></pre><ol>
+<li><p>&#x5B9A;&#x4E49;&#x5207;&#x9762;&#x7C7B;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">package com.interceptor.logger;</div><div class="line"></div><div class="line">import org.aspectj.lang.JoinPoint;</div><div class="line">import org.aspectj.lang.ProceedingJoinPoint;</div><div class="line">import org.aspectj.lang.annotation.AfterThrowing;</div><div class="line">import org.aspectj.lang.annotation.Around;</div><div class="line">import org.aspectj.lang.annotation.Aspect;</div><div class="line">import org.slf4j.Logger;</div><div class="line">import org.slf4j.LoggerFactory;</div><div class="line">import org.springframework.stereotype.Component;</div><div class="line"></div><div class="line">import java.util.Arrays;</div><div class="line"></div><div class="line">/**</div><div class="line"> * &#x73AF;&#x7ED5;&#x901A;&#x77E5; &#x5F02;&#x5E38;&#x901A;&#x77E5;</div><div class="line"> *</div><div class="line"> * Created by Toyr on 16-12-26.</div><div class="line"> */</div><div class="line">@Aspect</div><div class="line">@Component</div><div class="line">public class LogAspect {</div><div class="line"></div><div class="line">    private static Logger logger = LoggerFactory.getLogger(LogAspect.class);</div><div class="line"></div><div class="line">    @Around(<span class="string">&quot;@annotation(com.ai.acodm.base.interceptor.logger.annotations.LogAspects)&quot;</span>)</div><div class="line">    public Object <span class="built_in">log</span>Around(ProceedingJoinPoint pjp) throws Throwable {</div><div class="line">        Object[] args = pjp.getArgs();</div><div class="line">        String className = pjp.getTarget().getClass().getName();</div><div class="line">        String methodName = pjp.getSignature().getName();</div><div class="line">        logger.info(<span class="string">&quot;&#x65B9;&#x6CD5;&quot;</span> + className + <span class="string">&quot;#&quot;</span> + methodName + <span class="string">&quot;&#x8C03;&#x7528;&#x524D;&#x53C2;&#x6570;&#xFF1A;&quot;</span> + Arrays.asList(args));</div><div class="line">        Object retVal = pjp.proceed();</div><div class="line">        logger.info(<span class="string">&quot;&#x65B9;&#x6CD5;&quot;</span> + className + <span class="string">&quot;#&quot;</span> + methodName + <span class="string">&quot;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#xFF1A;&quot;</span> + retVal.toString());</div><div class="line">        <span class="built_in">return</span> retVal;</div><div class="line">    }</div><div class="line"></div><div class="line">    @AfterThrowing(pointcut = <span class="string">&quot;@annotation(com.ai.acodm.base.interceptor.logger.annotations.LogAspects)&quot;</span>, throwing = <span class="string">&quot;ex&quot;</span>)</div><div class="line">    public void <span class="keyword">do</span>Throwing(JoinPoint jp, Throwable ex) {</div><div class="line">        String className = jp.getTarget().getClass().getName();</div><div class="line">        String methodName = jp.getSignature().getName();</div><div class="line">        logger.error(<span class="string">&quot;&#x65B9;&#x6CD5;&quot;</span> + className + <span class="string">&quot;#&quot;</span> + methodName + <span class="string">&quot;&#x6267;&#x884C;&#x4E2D;&#x629B;&#x51FA;&#x7684;&#x5F02;&#x5E38;&#xFF1A;&quot;</span> + ex);</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+</li>
+<li><p>&#x4F7F;&#x7528;spring&#x7684;&#x914D;&#x7F6E;&#x81EA;&#x52A8;&#x5B8C;&#x6210;&#x521B;&#x5EFA;&#x4EE3;&#x7406;&#x7EC7;&#x5165;&#x5207;&#x9762;&#x7684;&#x5DE5;&#x4F5C;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;!-- spring&#x901A;&#x77E5;&#x626B;&#x63CF; --&gt;</div><div class="line">&lt;aop:aspectj-autoproxy/&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://toyr.github.io/2016/12/26/annotation/" data-id="cix601rv90008ko235xxw0snm" class="article-share-link">分享到</a><div class="tags"><a href="/tags/注解/">注解</a><a href="/tags/Annotation/">Annotation</a><a href="/tags/Aspect/">Aspect</a></div><div class="post-nav"><a href="/2016/12/21/weblogic/" class="next">第四篇 weblogic下war包的部署</a></div><div data-thread-key="2016/12/26/annotation/" data-title="第五篇 自定义注解annotation" data-url="http://toyr.github.io/2016/12/26/annotation/" class="ds-share flat"><div class="ds-share-inline"><ul class="ds-share-icons-16"><li data-toggle="ds-share-icons-more"><a href="javascript:void(0);" class="ds-more">分享到：</a></li><li><a href="javascript:void(0);" data-service="weibo" class="ds-weibo">微博</a></li><li><a href="javascript:void(0);" data-service="qzone" class="ds-qzone">QQ空间</a></li><li><a href="javascript:void(0);" data-service="qqt" class="ds-qqt">腾讯微博</a></li><li><a href="javascript:void(0);" data-service="wechat" class="ds-wechat">微信</a></li></ul><div class="ds-share-icons-more"></div></div></div><div data-thread-key="2016/12/26/annotation/" data-title="第五篇 自定义注解annotation" data-url="http://toyr.github.io/2016/12/26/annotation/" data-author-key="1" class="ds-thread"></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="http://toyr.github.io"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/12/26/annotation/">第五篇 自定义注解annotation</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/weblogic/">第四篇 weblogic下war包的部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/ExecutorService/">第三篇 Executor和ExecutorService</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/07/SSM/">第二篇 浅谈SSM框架整合</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/28/My-New-Post/">第一篇 开发环境配置</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://weibo.com/u/2423387631" title="我的新浪微博" target="_blank">我的新浪微博</a></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/SSM/" style="font-size: 15px;">SSM</a> <a href="/tags/小白/" style="font-size: 15px;">小白</a> <a href="/tags/注解/" style="font-size: 15px;">注解</a> <a href="/tags/Annotation/" style="font-size: 15px;">Annotation</a> <a href="/tags/Aspect/" style="font-size: 15px;">Aspect</a> <a href="/tags/框架/" style="font-size: 15px;">框架</a> <a href="/tags/环境配置/" style="font-size: 15px;">环境配置</a> <a href="/tags/weblogic/" style="font-size: 15px;">weblogic</a> <a href="/tags/war包/" style="font-size: 15px;">war包</a> <a href="/tags/项目部署/" style="font-size: 15px;">项目部署</a> <a href="/tags/ExecutorService/" style="font-size: 15px;">ExecutorService</a> <a href="/tags/java-util-concurrent/" style="font-size: 15px;">java.util.concurrent</a> <a href="/tags/并发处理包/" style="font-size: 15px;">并发处理包</a></div></div><div class="widget"><div class="comments-title"><i class="fa fa-comment-o"> 最近评论</i></div><div data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="32" data-show-title="1" class="ds-recent-comments"></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">TOYR.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script>var duoshuoQuery = {short_name:'toyr'};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

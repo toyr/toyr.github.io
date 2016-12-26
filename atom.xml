@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://toyr.github.io/"/>
-  <updated>2016-12-23T02:22:29.000Z</updated>
+  <updated>2016-12-26T12:05:12.000Z</updated>
   <id>http://toyr.github.io/</id>
   
   <author>
@@ -14,6 +14,111 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第五篇 自定义注解annotation</title>
+    <link href="http://toyr.github.io/2016/12/26/annotation/"/>
+    <id>http://toyr.github.io/2016/12/26/annotation/</id>
+    <published>2016-12-26T10:47:58.000Z</published>
+    <updated>2016-12-26T12:05:12.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>springmvc&#x7684;&#x6CE8;&#x89E3;&#x5927;&#x5BB6;&#x5E94;&#x8BE5;&#x90FD;&#x7528;&#x8FC7;&#xFF0C;&#x4F7F;&#x7528;&#x6CE8;&#x89E3;&#x76F8;&#x6BD4;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x66F4;&#x52A0;&#x7B80;&#x5355;&#x6613;&#x7528;&#xFF0C;&#x7B80;&#x5355;&#x4ECB;&#x7ECD;&#x4E00;&#x4E0B;&#x81EA;&#x5B9A;&#x4E49;&#x6CE8;&#x89E3;&#x3002;<br><a id="more"></a></p>
+<ol>
+<li><p>&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x6CE8;&#x89E3;&#x63A5;&#x53E3;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">package com.interceptor.logger.annotations;</div><div class="line"></div><div class="line">import java.lang.annotation.*;</div><div class="line"></div><div class="line">/**</div><div class="line"> * &#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x524D;&#x540E;&#x6216;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x540E;&#x6253;&#x51FA;&#x65E5;&#x5FD7;&#x7684;&#x6CE8;&#x89E3;</div><div class="line"> *</div><div class="line"> * Created by Toyr on 16-12-26.</div><div class="line"> */</div><div class="line">@Retention(RetentionPolicy.RUNTIME)</div><div class="line">@Target(ElementType.METHOD)</div><div class="line">public @interface LogAspects {</div><div class="line">}</div></pre></td></tr></table></figure>
+<h6 id="&#x5143;&#x6CE8;&#x89E3;&#xFF1A;&#x5143;&#x6CE8;&#x89E3;&#x7684;&#x4F5C;&#x7528;&#x5C31;&#x662F;&#x8D1F;&#x8D23;&#x6CE8;&#x89E3;&#x5176;&#x4ED6;&#x6CE8;&#x89E3;&#x3002;-Target&#xFF0C;-Retention&#xFF0C;-Documented&#xFF0C;-Inherited"><a href="#&#x5143;&#x6CE8;&#x89E3;&#xFF1A;&#x5143;&#x6CE8;&#x89E3;&#x7684;&#x4F5C;&#x7528;&#x5C31;&#x662F;&#x8D1F;&#x8D23;&#x6CE8;&#x89E3;&#x5176;&#x4ED6;&#x6CE8;&#x89E3;&#x3002;-Target&#xFF0C;-Retention&#xFF0C;-Documented&#xFF0C;-Inherited" class="headerlink" title="&#x5143;&#x6CE8;&#x89E3;&#xFF1A;&#x5143;&#x6CE8;&#x89E3;&#x7684;&#x4F5C;&#x7528;&#x5C31;&#x662F;&#x8D1F;&#x8D23;&#x6CE8;&#x89E3;&#x5176;&#x4ED6;&#x6CE8;&#x89E3;&#x3002;@Target&#xFF0C;@Retention&#xFF0C;@Documented&#xFF0C;@Inherited"></a>&#x5143;&#x6CE8;&#x89E3;&#xFF1A;&#x5143;&#x6CE8;&#x89E3;&#x7684;&#x4F5C;&#x7528;&#x5C31;&#x662F;&#x8D1F;&#x8D23;&#x6CE8;&#x89E3;&#x5176;&#x4ED6;&#x6CE8;&#x89E3;&#x3002;@Target&#xFF0C;@Retention&#xFF0C;@Documented&#xFF0C;@Inherited</h6><ul>
+<li>@Target &#x6CE8;&#x89E3;&#x7684;&#x4F7F;&#x7528;&#x8303;&#x56F4;&#xFF08;&#x5373;&#xFF1A;&#x88AB;&#x63CF;&#x8FF0;&#x7684;&#x6CE8;&#x89E3;&#x53EF;&#x4EE5;&#x7528;&#x5728;&#x4EC0;&#x4E48;&#x5730;&#x65B9;&#xFF09;</li>
+</ul>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>&#x53D6;&#x503C;</th>
+<th>&#x8303;&#x56F4;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CONSTRUCTOR</td>
+<td>&#x6784;&#x9020;&#x5668;</td>
+</tr>
+<tr>
+<td>FIELD</td>
+<td>&#x57DF;</td>
+</tr>
+<tr>
+<td>LOCAL_VARIABLE</td>
+<td>&#x5C40;&#x90E8;&#x53D8;&#x91CF;</td>
+</tr>
+<tr>
+<td>METHOD</td>
+<td>&#x65B9;&#x6CD5;</td>
+</tr>
+<tr>
+<td>PACKAGE</td>
+<td>&#x5305;</td>
+</tr>
+<tr>
+<td>PARAMETER</td>
+<td>&#x53C2;&#x6570;</td>
+</tr>
+<tr>
+<td>TYPE</td>
+<td>&#x7C7B;&#x3001;&#x63A5;&#x53E3;(&#x5305;&#x62EC;&#x6CE8;&#x89E3;&#x7C7B;&#x578B;) &#x6216;enum&#x58F0;&#x660E;</td>
+</tr>
+</tbody>
+</table>
+<pre><code>* @Retention &#x8868;&#x793A;&#x9700;&#x8981;&#x5728;&#x4EC0;&#x4E48;&#x7EA7;&#x522B;&#x4FDD;&#x5B58;&#x8BE5;&#x6CE8;&#x91CA;&#x4FE1;&#x606F;&#xFF0C;&#x7528;&#x4E8E;&#x63CF;&#x8FF0;&#x6CE8;&#x89E3;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF08;&#x5373;&#xFF1A;&#x88AB;&#x63CF;&#x8FF0;&#x7684;&#x6CE8;&#x89E3;&#x5728;&#x4EC0;&#x4E48;&#x8303;&#x56F4;&#x5185;&#x6709;&#x6548;&#xFF09;
+</code></pre><table>
+<thead>
+<tr>
+<th>&#x53D6;&#x503C;</th>
+<th>&#x751F;&#x547D;&#x5468;&#x671F;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SOURCE</td>
+<td>&#x6E90;&#x6587;&#x4EF6;</td>
+</tr>
+<tr>
+<td>CLASS</td>
+<td>class&#x7A33;&#x5065;</td>
+</tr>
+<tr>
+<td>RUNTIME</td>
+<td>&#x8FD0;&#x884C;&#x65F6;</td>
+</tr>
+</tbody>
+</table>
+<pre><code>* @Documented
+</code></pre><ol>
+<li><p>&#x5B9A;&#x4E49;&#x5207;&#x9762;&#x7C7B;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">package com.interceptor.logger;</div><div class="line"></div><div class="line">import org.aspectj.lang.JoinPoint;</div><div class="line">import org.aspectj.lang.ProceedingJoinPoint;</div><div class="line">import org.aspectj.lang.annotation.AfterThrowing;</div><div class="line">import org.aspectj.lang.annotation.Around;</div><div class="line">import org.aspectj.lang.annotation.Aspect;</div><div class="line">import org.slf4j.Logger;</div><div class="line">import org.slf4j.LoggerFactory;</div><div class="line">import org.springframework.stereotype.Component;</div><div class="line"></div><div class="line">import java.util.Arrays;</div><div class="line"></div><div class="line">/**</div><div class="line"> * &#x73AF;&#x7ED5;&#x901A;&#x77E5; &#x5F02;&#x5E38;&#x901A;&#x77E5;</div><div class="line"> *</div><div class="line"> * Created by Toyr on 16-12-26.</div><div class="line"> */</div><div class="line">@Aspect</div><div class="line">@Component</div><div class="line">public class LogAspect {</div><div class="line"></div><div class="line">    private static Logger logger = LoggerFactory.getLogger(LogAspect.class);</div><div class="line"></div><div class="line">    @Around(<span class="string">&quot;@annotation(com.ai.acodm.base.interceptor.logger.annotations.LogAspects)&quot;</span>)</div><div class="line">    public Object <span class="built_in">log</span>Around(ProceedingJoinPoint pjp) throws Throwable {</div><div class="line">        Object[] args = pjp.getArgs();</div><div class="line">        String className = pjp.getTarget().getClass().getName();</div><div class="line">        String methodName = pjp.getSignature().getName();</div><div class="line">        logger.info(<span class="string">&quot;&#x65B9;&#x6CD5;&quot;</span> + className + <span class="string">&quot;#&quot;</span> + methodName + <span class="string">&quot;&#x8C03;&#x7528;&#x524D;&#x53C2;&#x6570;&#xFF1A;&quot;</span> + Arrays.asList(args));</div><div class="line">        Object retVal = pjp.proceed();</div><div class="line">        logger.info(<span class="string">&quot;&#x65B9;&#x6CD5;&quot;</span> + className + <span class="string">&quot;#&quot;</span> + methodName + <span class="string">&quot;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#xFF1A;&quot;</span> + retVal.toString());</div><div class="line">        <span class="built_in">return</span> retVal;</div><div class="line">    }</div><div class="line"></div><div class="line">    @AfterThrowing(pointcut = <span class="string">&quot;@annotation(com.ai.acodm.base.interceptor.logger.annotations.LogAspects)&quot;</span>, throwing = <span class="string">&quot;ex&quot;</span>)</div><div class="line">    public void <span class="keyword">do</span>Throwing(JoinPoint jp, Throwable ex) {</div><div class="line">        String className = jp.getTarget().getClass().getName();</div><div class="line">        String methodName = jp.getSignature().getName();</div><div class="line">        logger.error(<span class="string">&quot;&#x65B9;&#x6CD5;&quot;</span> + className + <span class="string">&quot;#&quot;</span> + methodName + <span class="string">&quot;&#x6267;&#x884C;&#x4E2D;&#x629B;&#x51FA;&#x7684;&#x5F02;&#x5E38;&#xFF1A;&quot;</span> + ex);</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+</li>
+<li><p>&#x4F7F;&#x7528;spring&#x7684;&#x914D;&#x7F6E;&#x81EA;&#x52A8;&#x5B8C;&#x6210;&#x521B;&#x5EFA;&#x4EE3;&#x7406;&#x7EC7;&#x5165;&#x5207;&#x9762;&#x7684;&#x5DE5;&#x4F5C;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;!-- spring&#x901A;&#x77E5;&#x626B;&#x63CF; --&gt;</div><div class="line">&lt;aop:aspectj-autoproxy/&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;springmvc&amp;#x7684;&amp;#x6CE8;&amp;#x89E3;&amp;#x5927;&amp;#x5BB6;&amp;#x5E94;&amp;#x8BE5;&amp;#x90FD;&amp;#x7528;&amp;#x8FC7;&amp;#xFF0C;&amp;#x4F7F;&amp;#x7528;&amp;#x6CE8;&amp;#x89E3;&amp;#x76F8;&amp;#x6BD4;&amp;#x914D;&amp;#x7F6E;&amp;#x6587;&amp;#x4EF6;&amp;#x66F4;&amp;#x52A0;&amp;#x7B80;&amp;#x5355;&amp;#x6613;&amp;#x7528;&amp;#xFF0C;&amp;#x7B80;&amp;#x5355;&amp;#x4ECB;&amp;#x7ECD;&amp;#x4E00;&amp;#x4E0B;&amp;#x81EA;&amp;#x5B9A;&amp;#x4E49;&amp;#x6CE8;&amp;#x89E3;&amp;#x3002;&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://toyr.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="注解" scheme="http://toyr.github.io/tags/%E6%B3%A8%E8%A7%A3/"/>
+    
+      <category term="Annotation" scheme="http://toyr.github.io/tags/Annotation/"/>
+    
+      <category term="Aspect" scheme="http://toyr.github.io/tags/Aspect/"/>
+    
+  </entry>
   
   <entry>
     <title>第四篇 weblogic下war包的部署</title>
