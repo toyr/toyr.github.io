@@ -4,8 +4,28 @@
 
     
   <url>
+    <loc>http://toyr.github.io/2017/01/07/svn/</loc>
+    <lastmod>2017-01-11T05:20:35.000Z</lastmod>
+    <data>
+        <display>
+        <title>第六篇 svn相关</title>
+        <pubTime>2017-01-07T05:10:27.000Z</pubTime>
+        
+        <tag>svn</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="http://toyr.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://toyr.github.io/2016/12/26/annotation/</loc>
-    <lastmod>2016-12-26T12:05:12.000Z</lastmod>
+    <lastmod>2016-12-27T02:01:07.000Z</lastmod>
     <data>
         <display>
         <title>第五篇 自定义注解annotation</title>
