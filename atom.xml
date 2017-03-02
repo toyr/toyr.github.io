@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://toyr.github.io/"/>
-  <updated>2017-01-16T09:04:58.000Z</updated>
+  <updated>2017-02-21T02:38:44.000Z</updated>
   <id>http://toyr.github.io/</id>
   
   <author>
@@ -16,11 +16,47 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>第八篇 oracle相关</title>
+    <link href="http://toyr.github.io/2017/02/07/oracle/"/>
+    <id>http://toyr.github.io/2017/02/07/oracle/</id>
+    <published>2017-02-07T01:10:27.000Z</published>
+    <updated>2017-02-21T02:38:44.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>&#x6574;&#x7406;&#x4E0B;oracle&#x4EE5;&#x53CA;PL/SQL&#x7684;&#x76F8;&#x5173;&#x77E5;&#x8BC6;&#x70B9;<br><a id="more"></a></p>
+<ol>
+<li>user_tab_columns<br>&#x5728;&#x68B3;&#x7406;&#x4E1A;&#x52A1;&#x5173;&#x7CFB;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x80AF;&#x5B9A;&#x5C11;&#x4E0D;&#x4E86;&#x5BF9;&#x6570;&#x636E;&#x5E93;&#x8868;&#x7ED3;&#x6784;&#x7684;&#x5206;&#x5FC3;&#xFF0C;user_tab_columns&#x8868;&#x4FDD;&#x5B58;&#x4E86;&#x5F53;&#x524D;&#x7528;&#x6237;&#x7684;&#x8868;&#x3001;&#x89C6;&#x56FE;&#x548C;Clusters&#x4E2D;&#x7684;&#x5217;&#x4FE1;&#x606F;&#xFF0C;&#x4EE5;&#x540E;&#x662F;&#x8BE5;&#x8868;&#x5404;&#x5B57;&#x6BB5;&#x7684;&#x542B;&#x4E49;<br><img src="http://ohplkxeea.bkt.clouddn.com/user_tab_columns.png" alt=""><br>&#x6709;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x67E5;&#x8BE2;&#x67D0;&#x4E00;&#x4E2A;&#x5B57;&#x6BB5;&#x90FD;&#x5B58;&#x5728;&#x4E8E;&#x90A3;&#x4E9B;&#x8868;&#x4E2D;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E0B;&#x9762;&#x8FD9;&#x6761;sql&#x8FDB;&#x884C;&#x67E5;&#x8BE2; <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">select column_name,</div><div class="line">table_name,data_type ,data_length,data_precision,data_scale from user_tab_columns <span class="built_in">where</span> column_name=<span class="string">&apos;ORDER_ID&apos;</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>&#x6709;&#x4E86;&#x5F20;&#x8868;&#x53EF;&#x4EE5;&#x65B9;&#x4FBF;&#x6211;&#x4EEC;&#x7684;&#x5F88;&#x591A;&#x67E5;&#x8BE2;&#x3002;</p>
+<ol>
+<li>DECODE&#x65B9;&#x6CD5;<br>&#x4E3B;&#x8981;&#x4F5C;&#x7528;&#xFF1A;&#x5C06;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x7FFB;&#x8BD1;&#x6210;&#x5176;&#x4ED6;&#x503C;<br>&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#xFF1A; <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Select decode&#xFF08;columnname&#xFF0C;&#x503C;1,&#x7FFB;&#x8BD1;&#x503C;1,&#x503C;2,&#x7FFB;&#x8BD1;&#x503C;2,...&#x503C;n,&#x7FFB;&#x8BD1;&#x503C;n,&#x7F3A;&#x7701;&#x503C;&#xFF09;From tablename Where ...</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>&#x5176;&#x4E2D;columname&#x4E3A;&#x8981;&#x9009;&#x62E9;&#x7684;&#x4E3A;&#x8981;&#x9009;&#x62E9;&#x7684;table&#x4E2D;&#x6240;&#x5B9A;&#x4E49;&#x7684;column<br>if &#xFF08;&#x6761;&#x4EF6;==&#x503C;1&#xFF09;<br>then&#x3000;&#x3000;&#x3000;&#x3000;<br>return(&#x7FFB;&#x8BD1;&#x503C;1)<br>elsif &#xFF08;&#x6761;&#x4EF6;==&#x503C;2&#xFF09;<br>then&#x3000;&#x3000;&#x3000;&#x3000;<br>return(&#x7FFB;&#x8BD1;&#x503C;2)&#x3000;&#x3000;&#x3000;&#x3000;<br>&#x2026;&#x2026;<br>elsif &#xFF08;&#x6761;&#x4EF6;==&#x503C;n&#xFF09;<br>then&#x3000;&#x3000;&#x3000;&#x3000;<br>return(&#x7FFB;&#x8BD1;&#x503C;n)<br>else<br>return(&#x7F3A;&#x7701;&#x503C;)<br>end if</p>
+<ol>
+<li>NVL&#x51FD;&#x6570;<br>NVL(E1, E2)&#x7684;&#x529F;&#x80FD;&#x4E3A;&#xFF1A;&#x5982;&#x679C;E1&#x4E3A;NULL&#xFF0C;&#x5219;&#x51FD;&#x6570;&#x8FD4;&#x56DE;E2&#xFF0C;&#x5426;&#x5219;&#x8FD4;&#x56DE;E1&#x672C;&#x8EAB;&#x3002;&#x4F46;&#x6B64;&#x51FD;&#x6570;&#x6709;&#x4E00;&#x5B9A;&#x5C40;&#x9650;&#xFF0C;&#x6240;&#x4EE5;&#x5C31;&#x6709;&#x4E86;NVL2&#x51FD;&#x6570;&#x3002;<br>&#x62D3;&#x5C55;&#xFF1A;NVL2&#x51FD;&#x6570;:Oracle/PLSQL&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x51FD;&#x6570;,Oracle&#x5728;NVL&#x51FD;&#x6570;&#x7684;&#x529F;&#x80FD;&#x4E0A;&#x6269;&#x5C55;&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;NVL2&#x51FD;&#x6570;&#x3002;NVL2(E1, E2, E3)&#x7684;&#x529F;&#x80FD;&#x4E3A;&#xFF1A;&#x5982;&#x679C;E1&#x4E3A;NULL&#xFF0C;&#x5219;&#x51FD;&#x6570;&#x8FD4;&#x56DE;E3&#xFF0C;&#x82E5;E1&#x4E0D;&#x4E3A;null&#xFF0C;&#x5219;&#x8FD4;&#x56DE;E2&#x3002;</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;#x6574;&amp;#x7406;&amp;#x4E0B;oracle&amp;#x4EE5;&amp;#x53CA;PL/SQL&amp;#x7684;&amp;#x76F8;&amp;#x5173;&amp;#x77E5;&amp;#x8BC6;&amp;#x70B9;&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://toyr.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="oracle" scheme="http://toyr.github.io/tags/oracle/"/>
+    
+  </entry>
+  
+  <entry>
     <title>第七篇 alibaba Java开发手册笔记</title>
     <link href="http://toyr.github.io/2017/01/16/abibaba/"/>
     <id>http://toyr.github.io/2017/01/16/abibaba/</id>
     <published>2017-01-16T12:13:57.000Z</published>
-    <updated>2017-01-16T09:04:58.000Z</updated>
+    <updated>2017-01-23T02:00:32.000Z</updated>
     
     <content type="html"><![CDATA[<p>&#x5B66;&#x4E60;&#x4E00;&#x4E0B;&#x963F;&#x91CC;&#x7684;Java&#x5F00;&#x53D1;&#x624B;&#x518C;&#xFF0C;&#x8BB0;&#x5F55;&#x4E00;&#x4E9B;&#x5BF9;&#x81EA;&#x5DF1;&#x6709;&#x7528;&#x7684;&#x6280;&#x672F;&#x70B9;<br><a id="more"></a></p>
 <h2 id="&#x7F16;&#x7A0B;&#x89C4;&#x7EA6;"><a href="#&#x7F16;&#x7A0B;&#x89C4;&#x7EA6;" class="headerlink" title="&#x7F16;&#x7A0B;&#x89C4;&#x7EA6;"></a>&#x7F16;&#x7A0B;&#x89C4;&#x7EA6;</h2><h3 id="&#x547D;&#x540D;&#x89C4;&#x7EA6;"><a href="#&#x547D;&#x540D;&#x89C4;&#x7EA6;" class="headerlink" title="&#x547D;&#x540D;&#x89C4;&#x7EA6;"></a>&#x547D;&#x540D;&#x89C4;&#x7EA6;</h3><ol>
@@ -54,7 +90,12 @@
 <li><p>&#x4E0D;&#x8981;&#x5728; foreach &#x5FAA;&#x73AF;&#x91CC;&#x8FDB;&#x884C;&#x5143;&#x7D20;&#x7684; remove/add &#x64CD;&#x4F5C;&#x3002;remove &#x5143;&#x7D20;&#x8BF7;&#x4F7F;&#x7528; Iterator<br>&#x65B9;&#x5F0F;&#xFF0C;&#x5982;&#x679C;&#x5E76;&#x53D1;&#x64CD;&#x4F5C;&#xFF0C;&#x9700;&#x8981;&#x5BF9; Iterator &#x5BF9;&#x8C61;&#x52A0;&#x9501;&#x3002;<br>&#x53CD;&#x4F8B;&#xFF1A;</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; a = new ArrayList&lt;String&gt;();</div><div class="line">a.add(<span class="string">&quot;1&quot;</span>);</div><div class="line">a.add(<span class="string">&quot;2&quot;</span>);</div><div class="line"><span class="keyword">for</span> (String temp : a) {</div><div class="line">    <span class="keyword">if</span>(<span class="string">&quot;1&quot;</span>.equals(temp)){</div><div class="line">	    a.remove(temp);</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
 <p> &#x8BF4;&#x660E;&#xFF1A;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x7684;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x4F1A;&#x51FA;&#x4E4E;&#x5927;&#x5BB6;&#x7684;&#x610F;&#x6599;&#xFF0C;&#x90A3;&#x4E48;&#x8BD5;&#x4E00;&#x4E0B;&#x628A;&#x201C;1&#x201D;&#x6362;&#x6210;&#x201C;2&#x201D;&#xFF0C;&#x4F1A;&#x662F;&#x540C;&#x6837;&#x7684;&#x7ED3;<br>&#x679C;&#x5417;&#xFF1F;<br>&#x6B63;&#x4F8B;&#xFF1A;</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Iterator&lt;String&gt; it = a.iterator();</div><div class="line"><span class="keyword">while</span>(it.hasNext()){</div><div class="line">String temp = it.next();</div><div class="line"><span class="keyword">if</span>(&#x5220;&#x9664;&#x5143;&#x7D20;&#x7684;&#x6761;&#x4EF6;){</div><div class="line">    it.remove();</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Iterator&lt;String&gt; it = a.iterator();</div><div class="line"><span class="keyword">while</span>(it.hasNext()){</div><div class="line">String temp = it.next();</div><div class="line"><span class="keyword">if</span>(&#x5220;&#x9664;&#x5143;&#x7D20;&#x7684;&#x6761;&#x4EF6;){</div><div class="line">    it.remove();</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+</li>
+<li><p>&#x96C6;&#x5408;&#x521D;&#x59CB;&#x5316;&#x65F6;&#xFF0C;&#x5C3D;&#x91CF;&#x6307;&#x5B9A;&#x96C6;&#x5408;&#x521D;&#x59CB;&#x503C;&#x5927;&#x5C0F;&#x3002;<br>&#x8BF4;&#x660E;&#xFF1A;ArrayList &#x5C3D;&#x91CF;&#x4F7F;&#x7528; ArrayList(int initialCapacity) &#x521D;&#x59CB;&#x5316;&#x3002;</p>
+</li>
+<li>&#x4F7F;&#x7528; entrySet &#x904D;&#x5386; Map &#x7C7B;&#x96C6;&#x5408; KV&#xFF0C;&#x800C;&#x4E0D;&#x662F; keySet &#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x904D;&#x5386;&#x3002;<br>&#x8BF4;&#x660E;&#xFF1A;keySet &#x5176;&#x5B9E;&#x662F;&#x904D;&#x5386;&#x4E86; 2 &#x6B21;&#xFF0C;&#x4E00;&#x6B21;&#x662F;&#x8F6C;&#x4E3A; Iterator &#x5BF9;&#x8C61;&#xFF0C;&#x53E6;&#x4E00;&#x6B21;&#x662F;&#x4ECE; hashMap &#x4E2D;&#x53D6;&#x51FA; key<br>&#x6240;&#x5BF9;&#x5E94;&#x7684; value&#x3002;&#x800C; entrySet &#x53EA;&#x662F;&#x904D;&#x5386;&#x4E86;&#x4E00;&#x6B21;&#x5C31;&#x628A; key &#x548C; value &#x90FD;&#x653E;&#x5230;&#x4E86; entry &#x4E2D;&#xFF0C;&#x6548;&#x7387;&#x66F4;<br>&#x9AD8;&#x3002;&#x5982;&#x679C;&#x662F; JDK8&#xFF0C;&#x4F7F;&#x7528; Map.foreach &#x65B9;&#x6CD5;&#x3002;<br>&#x6B63;&#x4F8B;&#xFF1A;values()&#x8FD4;&#x56DE;&#x7684;&#x662F; V &#x503C;&#x96C6;&#x5408;&#xFF0C;&#x662F;&#x4E00;&#x4E2A; list &#x96C6;&#x5408;&#x5BF9;&#x8C61;&#xFF1B;keySet()&#x8FD4;&#x56DE;&#x7684;&#x662F; K &#x503C;&#x96C6;&#x5408;&#xFF0C;&#x662F;<br>&#x4E00;&#x4E2A; Set &#x96C6;&#x5408;&#x5BF9;&#x8C61;&#xFF1B;entrySet()&#x8FD4;&#x56DE;&#x7684;&#x662F; K-V &#x503C;&#x7EC4;&#x5408;&#x96C6;&#x5408;&#x3002;</li>
+<li>&#x5229;&#x7528; Set &#x5143;&#x7D20;&#x552F;&#x4E00;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x53EF;&#x4EE5;&#x5FEB;&#x901F;&#x5BF9;&#x53E6;&#x4E00;&#x4E2A;&#x96C6;&#x5408;&#x8FDB;&#x884C;&#x53BB;&#x91CD;&#x64CD;&#x4F5C;&#xFF0C;&#x907F;&#x514D;&#x4F7F;&#x7528; List &#x7684;<br>contains &#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x904D;&#x5386;&#x53BB;&#x91CD;&#x64CD;&#x4F5C;&#x3002;</li>
 </ol>
 ]]></content>
     
@@ -407,7 +448,7 @@
     <link href="http://toyr.github.io/2016/11/28/My-New-Post/"/>
     <id>http://toyr.github.io/2016/11/28/My-New-Post/</id>
     <published>2016-11-28T06:20:17.000Z</published>
-    <updated>2016-12-26T06:58:55.000Z</updated>
+    <updated>2017-01-20T03:10:17.000Z</updated>
     
     <content type="html"><![CDATA[<p><meta name="baidu-site-verification" content="QnuWFkn79U"><br>&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x7A0B;&#x5E8F;&#x5458;&#xFF0C;&#x52A0;&#x5165;&#x4E00;&#x4E2A;&#x65B0;&#x56E2;&#x961F;&#xFF0C;&#x7B2C;&#x4E00;&#x4EF6;&#x4E8B;&#x60C5;&#x5E94;&#x8BE5;&#x5C31;&#x662F;&#x642D;&#x5EFA;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#xFF0C;&#x8BA9;&#x9879;&#x76EE;&#x8DD1;&#x8D77;&#x6765;&#xFF0C;&#x719F;&#x6089;&#x9879;&#x76EE;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x6B63;&#x5F0F;&#x5F00;&#x59CB;&#x5DE5;&#x4F5C;&#x4E86;&#xFF0C;&#x603B;&#x7ED3;&#x4E86;&#x4E00;&#x4E0B;&#x5E38;&#x7528;&#x7684;&#x4E00;&#x4E9B;&#x73AF;&#x5883;&#x642D;&#x5EFA;&#x3002;<br><a id="more"></a></p>
 <h2 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h2><p>&#x9996;&#x5148;&#x5B89;&#x88C5;jdk&#xFF0C;&#x786E;&#x5B9A;&#x597D;&#x81EA;&#x5DF1;&#x7684;&#x5B89;&#x88C5;&#x8DEF;&#x5F84;&#xFF0C;&#x7136;&#x540E;&#x5F00;&#x59CB;&#x914D;&#x7F6E;&#x73AF;&#x5883;&#x53D8;&#x91CF;</p>
