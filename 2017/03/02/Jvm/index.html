@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>第九篇 Jvm相关 | TOYR</title><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/5.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">第九篇 Jvm相关</h1><a id="logo" href="/.">TOYR</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">第九篇 Jvm相关</h1><div class="post-meta">Mar 2, 2017<span> | </span><span class="category"><a href="/categories/技术/">技术</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><a data-thread-key="2017/03/02/Jvm/" href="/2017/03/02/Jvm/#comments" class="ds-thread-count"></a><div class="post-content"><h2 id="HotSpot&#x865A;&#x62DF;&#x673A;&#x53C2;&#x6570;&#x4F7F;&#x7528;"><a href="#HotSpot&#x865A;&#x62DF;&#x673A;&#x53C2;&#x6570;&#x4F7F;&#x7528;" class="headerlink" title="HotSpot&#x865A;&#x62DF;&#x673A;&#x53C2;&#x6570;&#x4F7F;&#x7528;"></a>HotSpot&#x865A;&#x62DF;&#x673A;&#x53C2;&#x6570;&#x4F7F;&#x7528;</h2><h4 id="&#x53C2;&#x6570;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;"><a href="#&#x53C2;&#x6570;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;" class="headerlink" title="&#x53C2;&#x6570;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;"></a>&#x53C2;&#x6570;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;</h4><a id="more"></a>
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-xx:+&lt;option&gt;&#x5F00;&#x542F; option&#x53C2;&#x6570;</div><div class="line">-xx:-&lt;option&gt;&#x5173;&#x95ED; option&#x53C2;&#x6570;</div><div class="line">-xx:&lt;option&gt;=&lt;value&gt; &#x5C06;option&#x53C2;&#x6570;&#x7684;&#x503C;&#x8BBE;&#x7F6E;&#x4E3A;value</div></pre></td></tr></table></figure>
+</code></pre><h4 id="&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x53C2;&#x6570;"><a href="#&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x53C2;&#x6570;" class="headerlink" title="&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x53C2;&#x6570;"></a>&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x53C2;&#x6570;</h4><table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;</th>
+<th>&#x9ED8;&#x8BA4;&#x503C;</th>
+<th>&#x4F7F;&#x7528;&#x4ECB;&#x7ECD;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DisableExplicitGC</td>
+<td>&#x9ED8;&#x8BA4;&#x5173;&#x95ED;</td>
+<td>&#x5FFD;&#x7565;&#x6765;&#x81EA;System.gc()&#x65B9;&#x6CD5;&#x89E6;&#x53D1;&#x7684;&#x5783;&#x573E;&#x6536;&#x96C6;</td>
+</tr>
+<tr>
+<td>ExplicitGCInovokesConcurrent</td>
+<td>&#x9ED8;&#x8BA4;&#x5173;&#x95ED;</td>
+<td>&#x5F53;&#x6536;&#x5230;System.gc()&#x65B9;&#x6CD5;&#x63D0;&#x4EA4;&#x7684;&#x5783;&#x573E;&#x6536;&#x96C6;&#x7533;&#x8BF7;&#x65F6;&#xFF0C;&#x4F7F;&#x7528;CMS&#x6536;&#x96C6;&#x5668;&#x8FDB;&#x884C;&#x6536;&#x96C6;</td>
+</tr>
+<tr>
+<td>UseSerialGC</td>
+<td>Client&#x6A21;&#x5F0F;&#x7684;&#x865A;&#x62DF;&#x673A;&#x9ED8;&#x8BA4;&#x5F00;&#x542F;&#xFF0C;&#x5176;&#x4ED6;&#x6A21;&#x5F0F;&#x5173;&#x95ED;</td>
+<td>&#x865A;&#x62DF;&#x673A;&#x8FD0;&#x884C;&#x5728;Client&#x6A21;&#x5F0F;&#x4E0B;&#x7684;&#x9ED8;&#x8BA4;&#x503C;&#xFF0C;&#x6253;&#x5F00;&#x6B64;&#x5F00;&#x5173;&#x540E;&#xFF0C;&#x4F7F;&#x7528;Serial+Serial Old&#x7684;&#x6536;&#x96C6;&#x5668;&#x7EC4;&#x5408;&#x8FDB;&#x884C;&#x5185;&#x5B58;&#x56DE;&#x6536;</td>
+</tr>
+<tr>
+<td>UseParNewGC</td>
+<td>&#x9ED8;&#x8BA4;&#x5173;&#x95ED;</td>
+<td>&#x6253;&#x5F00;&#x6B64;&#x5F00;&#x5173;&#x540E;&#xFF0C;&#x4F7F;&#x7528;ParNew+Serial Old&#x7684;&#x7684;&#x6536;&#x96C6;&#x5668;&#x7EC4;&#x5408;&#x8FDB;&#x884C;&#x5185;&#x5B58;&#x56DE;&#x6536;</td>
+</tr>
+<tr>
+<td>UseConcMarkSweepGC</td>
+<td>&#x9ED8;&#x8BA4;&#x5173;&#x95ED;</td>
+<td>&#x6253;&#x5F00;&#x6B64;&#x5F00;&#x5173;&#x540E;&#xFF0C;&#x4F7F;&#x7528;PerNew+CMS+Serial Old&#x7684;&#x6536;&#x96C6;&#x5668;&#x7EC4;&#x5408;&#x8FDB;&#x884C;&#x5185;&#x5B58;&#x56DE;&#x6536;&#x3002;&#x5982;&#x679C;CMS&#x6536;&#x96C6;&#x5668;&#x51FA;&#x73B0;Concurrent Mode Failure&#xFF0C;&#x5219;Serial Old&#x6536;&#x96C6;&#x5668;&#x7EC4;&#x4EF6;&#x5C06;&#x4F5C;&#x4E3A;&#x540E;&#x5907;&#x6536;&#x96C6;&#x5668;</td>
+</tr>
+<tr>
+<td>UseParallelGC</td>
+<td>Server&#x6A21;&#x5F0F;&#x7684;&#x865A;&#x62DF;&#x673A;&#x9ED8;&#x8BA4;&#x5F00;&#x542F;&#xFF0C;&#x5176;&#x4ED6;&#x6A21;&#x5F0F;&#x5173;&#x95ED;</td>
+<td>&#x865A;&#x62DF;&#x673A;&#x8FD0;&#x884C;&#x5728;Server&#x6A21;&#x5F0F;&#x4E0B;&#x7684;&#x9ED8;&#x8BA4;&#x503C;&#xFF0C;&#x6253;&#x5F00;&#x6B64;&#x5F00;&#x5173;&#x540E;&#xFF0C;&#x4F7F;&#x7528;Parallel Scavenge+Serial Old&#x7684;&#x6536;&#x96C6;&#x5668;&#x7EC4;&#x5408;&#x8FDB;&#x884C;&#x5185;&#x5B58;&#x56DE;&#x6536;</td>
+</tr>
+<tr>
+<td>UseParallelOldGC</td>
+<td>&#x9ED8;&#x8BA4;&#x5173;&#x95ED;</td>
+<td>&#x6253;&#x5F00;&#x6B64;&#x5F00;&#x5173;&#x540E;&#xFF0C;&#x4F7F;&#x7528;Parallel Scavenge+Parallel Old&#x7684;&#x6536;&#x96C6;&#x5668;&#x7EC4;&#x5408;&#x8FDB;&#x884C;&#x5185;&#x5B58;&#x56DE;&#x6536;</td>
+</tr>
+<tr>
+<td>SurvivorRatio</td>
+<td>&#x9ED8;&#x8BA4;&#x4E3A;8</td>
+<td>&#x65B0;&#x751F;&#x4EE3;&#x4E2D;Eden&#x533A;&#x57DF;&#x4E0E;Survivor&#x533A;&#x57DF;&#x7684;&#x5BB9;&#x91CF;&#x6BD4;&#x503C;</td>
+</tr>
+<tr>
+<td>MaxPermSize</td>
+<td>&#x5927;&#x90E8;&#x5206;&#x60C5;&#x51B5;&#x4E0B;&#x9ED8;&#x8BA4;&#x503C;&#x662F;64MB</td>
+<td>&#x6C38;&#x4E45;&#x4EE3;&#x7684;&#x6700;&#x5927;&#x503C;</td>
+</tr>
+<tr>
+<td>-Xms&#xFF1A;&#x521D;&#x59CB;&#x5806;&#x5927;&#x5C0F;</td>
+</tr>
+<tr>
+<td>-Mmx&#xFF1A;&#x6700;&#x5927;&#x6700;&#x5927;&#x5C0F;</td>
+</tr>
+</tbody>
+</table>
+<h4 id="&#x8C03;&#x8BD5;&#x53C2;&#x6570;"><a href="#&#x8C03;&#x8BD5;&#x53C2;&#x6570;" class="headerlink" title="&#x8C03;&#x8BD5;&#x53C2;&#x6570;"></a>&#x8C03;&#x8BD5;&#x53C2;&#x6570;</h4><table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;</th>
+<th>&#x9ED8;&#x8BA4;&#x503C;</th>
+<th>&#x4F7F;&#x7528;&#x4ECB;&#x7ECD;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PrintGC</td>
+<td>&#x9ED8;&#x8BA4;&#x5173;&#x95ED;</td>
+<td>&#x6253;&#x5370;GC&#x4FE1;&#x606F;</td>
+</tr>
+<tr>
+<td>PrintGCDetails</td>
+<td>&#x9ED8;&#x8BA4;&#x5173;&#x95ED;</td>
+<td>&#x6253;&#x5370;GC&#x7684;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;</td>
+</tr>
+<tr>
+<td>PrintGCTimeStamps</td>
+<td>&#x9ED8;&#x8BA4;&#x5173;&#x95ED;</td>
+<td>&#x6253;&#x5370;GC&#x505C;&#x987F;&#x8017;&#x65F6;</td>
+</tr>
+<tr>
+<td>HeapDumpOnOutOf MemeoryError</td>
+<td>&#x9ED8;&#x8BA4;&#x5173;&#x95ED;</td>
+<td>&#x5728;&#x53D1;&#x751F;&#x5185;&#x5B58;&#x6EA2;&#x51FA;&#x5F02;&#x5E38;&#x65F6;&#x662F;&#x5426;&#x751F;&#x6210;&#x5806;&#x8F6C;&#x50A8;&#x5FEB;&#x7167;&#xFF0C;&#x5173;&#x95ED;&#x5219;&#x4E0D;&#x751F;&#x6210;</td>
+</tr>
+</tbody>
+</table>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://toyr.github.io/2017/03/02/Jvm/" data-id="cizs2pvad0001l823bue6ob8c" class="article-share-link">分享到</a><div class="tags"><a href="/tags/Jvm/">Jvm</a></div><div class="post-nav"><a href="/2017/02/07/oracle/" class="next">第八篇 oracle相关</a></div><div data-thread-key="2017/03/02/Jvm/" data-title="第九篇 Jvm相关" data-url="http://toyr.github.io/2017/03/02/Jvm/" class="ds-share flat"><div class="ds-share-inline"><ul class="ds-share-icons-16"><li data-toggle="ds-share-icons-more"><a href="javascript:void(0);" class="ds-more">分享到：</a></li><li><a href="javascript:void(0);" data-service="weibo" class="ds-weibo">微博</a></li><li><a href="javascript:void(0);" data-service="qzone" class="ds-qzone">QQ空间</a></li><li><a href="javascript:void(0);" data-service="qqt" class="ds-qqt">腾讯微博</a></li><li><a href="javascript:void(0);" data-service="wechat" class="ds-wechat">微信</a></li></ul><div class="ds-share-icons-more"></div></div></div><div data-thread-key="2017/03/02/Jvm/" data-title="第九篇 Jvm相关" data-url="http://toyr.github.io/2017/03/02/Jvm/" data-author-key="1" class="ds-thread"></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="http://toyr.github.io"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/03/02/Jvm/">第九篇 Jvm相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/07/oracle/">第八篇 oracle相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/16/abibaba/">第七篇 alibaba Java开发手册笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/07/svn/">第六篇 svn相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/26/annotation/">第五篇 自定义注解annotation</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/weblogic/">第四篇 weblogic下war包的部署</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/ExecutorService/">第三篇 Executor和ExecutorService</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/07/SSM/">第二篇 浅谈SSM框架整合</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/28/My-New-Post/">第一篇 开发环境配置</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://weibo.com/u/2423387631" title="我的新浪微博" target="_blank">我的新浪微博</a></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/注解/" style="font-size: 15px;">注解</a> <a href="/tags/Jvm/" style="font-size: 15px;">Jvm</a> <a href="/tags/weblogic/" style="font-size: 15px;">weblogic</a> <a href="/tags/war包/" style="font-size: 15px;">war包</a> <a href="/tags/项目部署/" style="font-size: 15px;">项目部署</a> <a href="/tags/oracle/" style="font-size: 15px;">oracle</a> <a href="/tags/小白/" style="font-size: 15px;">小白</a> <a href="/tags/环境配置/" style="font-size: 15px;">环境配置</a> <a href="/tags/svn/" style="font-size: 15px;">svn</a> <a href="/tags/Annotation/" style="font-size: 15px;">Annotation</a> <a href="/tags/Aspect/" style="font-size: 15px;">Aspect</a> <a href="/tags/ExecutorService/" style="font-size: 15px;">ExecutorService</a> <a href="/tags/java-util-concurrent/" style="font-size: 15px;">java.util.concurrent</a> <a href="/tags/并发处理包/" style="font-size: 15px;">并发处理包</a> <a href="/tags/框架/" style="font-size: 15px;">框架</a> <a href="/tags/SSM/" style="font-size: 15px;">SSM</a> <a href="/tags/规约/" style="font-size: 15px;">规约</a></div></div><div class="widget"><div class="comments-title"><i class="fa fa-comment-o"> 最近评论</i></div><div data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="32" data-show-title="1" class="ds-recent-comments"></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">TOYR.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script>var duoshuoQuery = {short_name:'toyr'};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
