@@ -4,8 +4,48 @@
 
     
   <url>
+    <loc>http://toyr.github.io/2017/01/16/abibaba/</loc>
+    <lastmod>2017-03-08T08:23:23.000Z</lastmod>
+    <data>
+        <display>
+        <title>第七篇 alibaba Java开发手册笔记</title>
+        <pubTime>2017-01-16T12:13:57.000Z</pubTime>
+        
+        <tag>规约</tag>
+         
+         
+           
+             
+              <breadCrumb title="笔记" url="http://toyr.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://toyr.github.io/2017/03/08/linux/</loc>
+    <lastmod>2017-03-08T02:22:12.000Z</lastmod>
+    <data>
+        <display>
+        <title>第十篇 linux常用命令</title>
+        <pubTime>2017-03-08T01:46:41.000Z</pubTime>
+        
+        <tag>linux命令</tag>
+         
+         
+           
+             
+              <breadCrumb title="笔记" url="http://toyr.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://toyr.github.io/2017/03/02/Jvm/</loc>
-    <lastmod>2017-03-03T07:07:30.000Z</lastmod>
+    <lastmod>2017-03-08T01:50:58.000Z</lastmod>
     <data>
         <display>
         <title>第九篇 Jvm相关</title>
@@ -37,26 +77,6 @@
            
              
               <breadCrumb title="技术" url="http://toyr.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://toyr.github.io/2017/01/16/abibaba/</loc>
-    <lastmod>2017-01-23T02:00:32.000Z</lastmod>
-    <data>
-        <display>
-        <title>第七篇 alibaba Java开发手册笔记</title>
-        <pubTime>2017-01-16T12:13:57.000Z</pubTime>
-        
-        <tag>规约</tag>
-         
-         
-           
-             
-              <breadCrumb title="笔记" url="http://toyr.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
