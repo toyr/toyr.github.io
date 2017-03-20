@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://toyr.github.io/"/>
-  <updated>2017-03-08T02:22:12.000Z</updated>
+  <updated>2017-03-08T08:57:40.000Z</updated>
   <id>http://toyr.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://toyr.github.io/2017/03/08/linux/"/>
     <id>http://toyr.github.io/2017/03/08/linux/</id>
     <published>2017-03-08T01:46:41.000Z</published>
-    <updated>2017-03-08T02:22:12.000Z</updated>
+    <updated>2017-03-08T08:57:40.000Z</updated>
     
     <content type="html"><![CDATA[<p>linux&#x5E38;&#x7528;&#x547D;&#x4EE4;&#x7B80;&#x4ECB;,&#x5206;&#x6210;&#x51E0;&#x5927;&#x7C7B;&#xFF0C;&#x4F5C;&#x4E3A;&#x5E73;&#x65F6;&#x7684;&#x4E00;&#x4E2A;&#x7D2F;&#x79EF;<br><!-- moreing --></p>
 <h2 id="&#x7528;&#x6237;&#x4E0E;&#x6587;&#x4EF6;"><a href="#&#x7528;&#x6237;&#x4E0E;&#x6587;&#x4EF6;" class="headerlink" title="&#x7528;&#x6237;&#x4E0E;&#x6587;&#x4EF6;"></a>&#x7528;&#x6237;&#x4E0E;&#x6587;&#x4EF6;</h2><ol>
@@ -29,7 +29,16 @@
 <p> &#x5982;&#x679C;&#x9012;&#x5F52;&#x5730;&#x6539;&#x53D8;&#x76EE;&#x5F55;&#x548C;&#x5176;&#x4E0B;&#x9762;&#x7684;&#x6240;&#x6709;&#x76EE;&#x5F55;&#x548C;&#x6587;&#x4EF6;</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chown -R learner:learner dir1</div></pre></td></tr></table></figure>
 </li>
-<li></li>
+<li><p>whereis &#x67E5;&#x627E;&#x7CFB;&#x7EDF;&#x547D;&#x4EE4;</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">whereis [option] name...</div></pre></td></tr></table></figure>
+<p> &#x547D;&#x4EE4;&#x4F5C;&#x7528;&#x662F;&#x663E;&#x793A;&#x547D;&#x4EE4;&#x540D;&#x79F0;&#x7684;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#x548C;&#x547D;&#x4EE4;&#x7684;&#x624B;&#x518C;&#x4F4D;&#x7F6E;</p>
+</li>
+<li><p>du &#x4F30;&#x7B97;&#x6587;&#x4EF6;&#x5360;&#x7528;&#x7A7A;&#x95F4;&#x5927;&#x5C0F;</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">du [OPTION]... [FILE]...</div></pre></td></tr></table></figure>
+<p> &#x67E5;&#x770B;&#x6587;&#x4EF6;&#x7684;&#x5927;&#x5C0F;<br> &#x8F93;&#x51FA;&#x7684;&#x7ED3;&#x679C;&#x7B2C;&#x4E00;&#x5217;&#x8868;&#x793A;&#x6240;&#x5360;&#x7A7A;&#x95F4;&#x5927;&#x5C0F;&#xFF08;&#x5355;&#x4F4D;&#x662F;KB&#xFF09;&#x3002;&#x7B2C;&#x4E8C;&#x5217;&#x662F;&#x6587;&#x4EF6;&#x540D;&#x3002;<br> &#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x9009;&#x9879;-h &#x7684;&#x65B9;&#x5F0F;&#x663E;&#x793A;&#xFF1A;</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[weblogic@localhost ~]$ du bin/</div><div class="line">32  bin/</div><div class="line">[weblogic@localhost ~]$ du -h bin/</div><div class="line">32K bin/</div></pre></td></tr></table></figure>
+<p> &#x5F53;&#x4F7F;&#x7528;-s&#x9009;&#x9879;&#x4F5C;&#x7528;&#x5728;&#x76EE;&#x5F55;&#x4E0A;&#x65F6;&#xFF0C;&#x503C;&#x663E;&#x793A;&#x603B;&#x7528;&#x91CF;&#x3002;&#x4E0D;&#x7528;&#x65F6;&#x5219;&#x663E;&#x793A;giant&#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x6BCF;&#x4E2A;&#x6587;&#x4EF6;</p>
+</li>
 </ol>
 ]]></content>
     
