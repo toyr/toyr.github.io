@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>http://toyr.github.io/2016/12/16/ExecutorService/</loc>
+    <lastmod>2017-05-11T01:57:58.000Z</lastmod>
+    <data>
+        <display>
+        <title>第三篇 Executor和ExecutorService</title>
+        <pubTime>2016-12-16T11:08:17.000Z</pubTime>
+        
+        <tag>ExecutorService</tag>
+         
+        <tag>java.util.concurrent</tag>
+         
+        <tag>并发处理包</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="http://toyr.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://toyr.github.io/2017/02/07/oracle/</loc>
     <lastmod>2017-04-10T01:51:16.000Z</lastmod>
     <data>
@@ -149,30 +173,6 @@
     </url>
 
     
-    
-  <url>
-    <loc>http://toyr.github.io/2016/12/16/ExecutorService/</loc>
-    <lastmod>2016-12-25T13:49:51.000Z</lastmod>
-    <data>
-        <display>
-        <title>第三篇 Executor和ExecutorService</title>
-        <pubTime>2016-12-16T11:08:17.000Z</pubTime>
-        
-        <tag>ExecutorService</tag>
-         
-        <tag>java.util.concurrent</tag>
-         
-        <tag>并发处理包</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术" url="http://toyr.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
   <url>
     <loc>http://toyr.github.io/2016/12/21/weblogic/</loc>
